@@ -3,6 +3,7 @@
     public class Chess
     {
         public string fen { get; private set; }
+
         private Board board;
 
         public Chess(string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
@@ -11,12 +12,12 @@
             board = new Board(fen);
         }
 
-        Chess(Board board)
+        private Chess(Board board)
         {
             this.board = board;
         }
 
-        public Chess Move(string move) //Pe2e4 Pe7e8Q
+        public Chess Move(string move) // Pe2e4 Pe7e8Q
         {
             FigureMoving fm = new FigureMoving(move);
             Board nextBoard = board.Move(fm);

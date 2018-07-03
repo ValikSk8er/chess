@@ -5,6 +5,7 @@
         public static Square none = new Square(-1, -1);
 
         public int x { get; private set; }
+
         public int y { get; private set; }
 
         public Square(int x, int y)

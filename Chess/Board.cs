@@ -1,17 +1,18 @@
-﻿using System;
-
-namespace Chess
+﻿namespace Chess
 {
     class Board
     {
         public string Fen { get; private set; }
+
         private Figure[,] figures;
+
         public Color MoveColor { get; private set; }
+
         public int MoveNumber { get; private set; }
 
         public Board(string fen)
         {
-            this.Fen = fen;
+            Fen = fen;
             figures = new Figure[8,8];
             Init();
         }
