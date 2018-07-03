@@ -11,8 +11,20 @@ namespace ChessDemo
             {
                 Console.WriteLine(chess.fen);
                 Print(ChessToAscii(chess));
+                foreach (string moves in chess.GetAllMoves())
+                {
+                    Console.Write(moves + "\t");
+                }
+
+                Console.WriteLine();
+                Console.Write("> ");
+
                 string move = Console.ReadLine();
-                if(move == "") break;
+                if(move == "")
+                {
+                    break;
+                }
+
                 chess = chess.Move(move);
             }
         }
@@ -43,11 +55,18 @@ namespace ChessDemo
             foreach (var x in text)
             {
                 if (x >= 'a' && x <= 'z')
+                {
                     Console.ForegroundColor = ConsoleColor.Red;
+                }
                 else if (x >= 'A' && x <= 'Z')
+                {
                     Console.ForegroundColor = ConsoleColor.White;
+                }
                 else
+                {
                     Console.ForegroundColor = ConsoleColor.Cyan;
+                }
+
                 Console.Write(x);
             }
 

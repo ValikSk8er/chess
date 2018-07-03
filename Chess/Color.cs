@@ -11,8 +11,16 @@
     {
         public static Color FlipColor(this Color color)
         {
-            if (color == Color.Black) return Color.White;
-            if (color == Color.White) return Color.Black;
+            if (color == Color.Black)
+            {
+                return Color.White;
+            }
+
+            if (color == Color.White)
+            {
+                return Color.Black;
+            }
+
             return Color.None;
         }
     }
