@@ -33,6 +33,10 @@
             {
                 return this;
             }
+            if (this.board.IsCheckAfterMove(fm))
+            {
+                return this;
+            }
             Board nextBoard = board.Move(fm);
             Chess nextChess = new Chess(nextBoard);
             return nextChess;
@@ -53,8 +57,13 @@
                 foreach (Square to in Square.YieldSquares())
                 {
                     FigureMoving fm = new FigureMoving(fs, to);
-                    if(this.moves.CanMove(fm))
-                        this.allMoves.Add(fm);
+                    if (this.moves.CanMove(fm))
+                    {
+                        if (!this.board.IsCheckAfterMove(fm))
+                        {
+                            this.allMoves.Add(fm);
+                        }
+                    }
                 }
             }
         }
@@ -69,6 +78,11 @@
             }
 
             return list;
+        }
+
+        public bool IsCheck()
+        {
+            return this.board.IsCheck();
         }
     }
 }

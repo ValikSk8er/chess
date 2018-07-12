@@ -29,13 +29,16 @@
         }
 
         public int DeltaX { get { return To.x - From.x;} }
+
         public int DeltaY { get { return To.y - From.y; } }
 
         public int AbsDeltaX { get { return Math.Abs(DeltaX); } }
-        public int AbsDeltaY { get { return Math.Abs(DeltaX); } }
+
+        public int AbsDeltaY { get { return Math.Abs(DeltaY); } }
 
         public int SignX { get { return Math.Sign(DeltaX); } }
-        public int SignY { get { return Math.Sign(DeltaX); } }
+
+        public int SignY { get { return Math.Sign(DeltaY); } }
 
         public override string ToString()
         {

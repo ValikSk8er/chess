@@ -130,5 +130,45 @@
             }
             return sb.ToString();
         }
+
+        private bool CanEatKing()
+        {
+            Square badKing = FindBadKing();
+            Moves moves = new Moves(this);
+            foreach (FigureOnSquare fs in this.YieldFigures())
+            {
+                FigureMoving fm = new FigureMoving(fs, badKing);
+                if (moves.CanMove(fm))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private Square FindBadKing()
+        {
+            Figure badKing = MoveColor == Color.Black ? Figure.WhiteKing : Figure.WhiteKing;
+            foreach (Square square in Square.YieldSquares())
+            {
+                if (GetFigureAt(square) == badKing)
+                {
+                    return square;
+                }
+            }
+            return Square.none;
+        }
+
+        public bool IsCheck()
+        {
+            Board after = new Board(Fen);
+            after.MoveColor = MoveColor.FlipColor();
+            return after.CanEatKing();
+        }
+
+        public bool IsCheckAfterMove(FigureMoving fm)
+        {
+            Board after = Move(fm);
+            return after.CanEatKing();
+        }
     }
 }
